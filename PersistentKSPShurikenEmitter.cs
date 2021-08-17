@@ -77,6 +77,9 @@ public class PersistentKSPShurikenEmitter
     public Vector3 force;
     public Vector3 rndForce;
     public Color color;
+    public float h;
+    public float s;
+    public float v;
     public float saturationMult;
     public float brightnessMult;
     public float alphaMult;
@@ -330,7 +333,7 @@ public class PersistentKSPShurikenEmitter
         emitParams.angularVelocity = angularV;
         emitParams.startLifetime = Random.Range(minEnergy, maxEnergy);
 
-        Color.RGBToHSV(color, out float h, out float s, out float v);
+        Color.RGBToHSV(color, out h, out s, out v);
         Color finalColor = Color.HSVToRGB(h, s * saturationMult, v * brightnessMult);
         finalColor.a = color.a * alphaMult;
 
@@ -675,7 +678,7 @@ public class PersistentKSPShurikenEmitter
                     }
                     
                     Color c = Color.Lerp(a, b, lerp);
-                    Color.RGBToHSV(c, out float h, out float s, out float v);
+                    Color.RGBToHSV(c, out h, out s, out v);
                     Color finalColor = Color.HSVToRGB(h, s * saturationMult, v * brightnessMult);
                     finalColor.a = c.a * alphaMult;
 
